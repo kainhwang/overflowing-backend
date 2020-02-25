@@ -17,11 +17,24 @@ import com.church.overflowing.jpa.service.MemberService;
 @RequestMapping("/member")
 public class MemberController {
 	
+	
+	
 	@Autowired
 	MemberService memberService;
 	
+	
+	
 	@GetMapping("/{memSq}")
 	public ResponseEntity<Object> getMember(HttpServletRequest request, @PathVariable("memSq") Long memSq) {
-	    return ResponseEntity.status(HttpStatus.OK).body(memberService.selectMemberBySq(memSq));
-	  }
+		
+		return ResponseEntity.status(HttpStatus.OK).body(memberService.selectMemberBySq(memSq));
+	}
+	
+	
+	
+	@GetMapping
+	public ResponseEntity<Object> getMembers(HttpServletRequest request) {
+		
+		return ResponseEntity.status(HttpStatus.OK).body(memberService.selectMemberAll());
+	}
 }
