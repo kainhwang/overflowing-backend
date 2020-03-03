@@ -1,6 +1,5 @@
 package com.church.overflowing.jpa.entity;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -18,18 +17,18 @@ import com.church.overflowing.jpa.entity.Flags.MemberGrade;
 import com.church.overflowing.jpa.entity.Flags.SchoolState;
 import com.church.overflowing.jpa.entity.Flags.YesOrNo;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 @Getter
-@Setter
 @Entity
 @Table(name="MEMBER")
-public class Member implements Serializable {
-	
-	private static final long serialVersionUID = 6374045669446095280L;
+public class Member extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -131,4 +130,46 @@ public class Member implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name="MEM_CHURCH_JOB")
 	private ChurchJob memChurchJob;
+	
+	@Builder
+	public Member(long memSq, String memId, String memPwd, String memNm, String memEnm, Timestamp memBirth,
+			String memPhone, String memEmail, Gender memGender, YesOrNo memMarriageYn, String memMarriagePartner,
+			Timestamp memMarriageDate, Timestamp memRegDate, String memGuideNm, String memPreChurch,
+			YesOrNo memBaptismYn, Timestamp memBaptismDate, String memBaptismChurch, String memAddr, String memSchool,
+			String memMajor, SchoolState memSchoolState, String memCompany, String memCompanyPosition,
+			String memCompanyTask, String memCarNm, String memCarNum, int memCarPool, String memDesc,
+			MemberGrade memGrade, ChurchJob memChurchJob) {
+		
+		this.memSq = memSq;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memNm = memNm;
+		this.memEnm = memEnm;
+		this.memBirth = memBirth;
+		this.memPhone = memPhone;
+		this.memEmail = memEmail;
+		this.memGender = memGender;
+		this.memMarriageYn = memMarriageYn;
+		this.memMarriagePartner = memMarriagePartner;
+		this.memMarriageDate = memMarriageDate;
+		this.memRegDate = memRegDate;
+		this.memGuideNm = memGuideNm;
+		this.memPreChurch = memPreChurch;
+		this.memBaptismYn = memBaptismYn;
+		this.memBaptismDate = memBaptismDate;
+		this.memBaptismChurch = memBaptismChurch;
+		this.memAddr = memAddr;
+		this.memSchool = memSchool;
+		this.memMajor = memMajor;
+		this.memSchoolState = memSchoolState;
+		this.memCompany = memCompany;
+		this.memCompanyPosition = memCompanyPosition;
+		this.memCompanyTask = memCompanyTask;
+		this.memCarNm = memCarNm;
+		this.memCarNum = memCarNum;
+		this.memCarPool = memCarPool;
+		this.memDesc = memDesc;
+		this.memGrade = memGrade;
+		this.memChurchJob = memChurchJob;
+	}
 }
