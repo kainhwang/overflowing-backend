@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.church.overflowing.jpa.entity.Community;
 import com.church.overflowing.jpa.entity.Flags.YesOrNo;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,22 @@ public class CommunitySaveRequestDto {
 	private String commDesc;
 	
 	private YesOrNo commUseYn;
+	
+	@Builder
+	public CommunitySaveRequestDto(String commNm,
+									String commPaster,
+									LocalDateTime commStdate,
+									LocalDateTime commEnddate,
+									String commDesc,
+									YesOrNo commUseYn) {
+		
+		this.commNm = commNm;
+		this.commPaster = commPaster;
+		this.commStdate = commStdate;
+		this.commEnddate = commEnddate;
+		this.commDesc = commDesc;
+		this.commUseYn = commUseYn;
+	}
 	
 	public Community toEntity() {
 		

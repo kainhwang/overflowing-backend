@@ -1,17 +1,41 @@
 package com.church.overflowing.jpa.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.church.overflowing.jpa.dto.CommunityMainResponseDto;
+import com.church.overflowing.jpa.dto.CommunitySaveRequestDto;
 import com.church.overflowing.jpa.repository.CommunityRepository;
 
+import lombok.AllArgsConstructor;
+
+
+@AllArgsConstructor
 @Service
 public class CommunityService {
 	
 	
+	
 	private CommunityRepository communityRepository;
 	
-	public CommunityService(CommunityRepository communityRepository) {
+	
+	
+	@Transactional
+	public Long save(CommunitySaveRequestDto dto) {
 		
-		this.communityRepository = communityRepository;
+		return communityRepository.save(dto.toEntity()).getCommSq();
+	}
+	
+	
+	
+	@Transactional(readOnly = true)
+	public List<CommunityMainResponseDto> findAllDesc() {
+		
+		return communityRepository.findAllDesc()
+									.map(CommunityMainResponseDto::new)
+									.collect(Collectors.toList());
 	}
 }
