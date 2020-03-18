@@ -1,6 +1,6 @@
 package com.church.overflowing.jpa.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -33,10 +34,10 @@ public class Education extends BaseEntity {
 	private String eduTeacher;
 	
 	@Column(name="EDU_STDATE")
-	private Timestamp eduStdate;
+	private LocalDateTime eduStdate;
 	
 	@Column(name="EDU_ENDDATE")
-	private Timestamp eduEnddate;
+	private LocalDateTime eduEnddate;
 	
 	@Column(name="EDU_FIXED_NUM")
 	private int eduFixedNum;
@@ -46,4 +47,26 @@ public class Education extends BaseEntity {
 	
 	@Column(name="EDU_DESC")
 	private String eduDesc;
+	
+	
+	
+	@Builder
+	public Education(long eduSq,
+						String eduNm,
+						String eduTeacher,
+						LocalDateTime eduStdate,
+						LocalDateTime eduEnddate,
+						int eduFixedNum,
+						String eduPlace,
+						String eduDesc) {
+		
+		this.eduSq = eduSq;
+		this.eduNm = eduNm;
+		this.eduTeacher = eduTeacher;
+		this.eduStdate = eduStdate;
+		this.eduEnddate = eduEnddate;
+		this.eduFixedNum = eduFixedNum;
+		this.eduPlace = eduPlace;
+		this.eduDesc = eduDesc;
+	}	
 }

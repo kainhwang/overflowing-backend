@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.church.overflowing.jpa.dto.CommunityMainResponseDto;
 import com.church.overflowing.jpa.dto.CommunitySaveRequestDto;
+import com.church.overflowing.jpa.entity.Community;
 import com.church.overflowing.jpa.repository.CommunityRepository;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class CommunityService {
 	
 	
 	@Transactional
-	public Long save(CommunitySaveRequestDto dto) {
+	public Long insertCommunity(CommunitySaveRequestDto dto) {
 		
 		return communityRepository.save(dto.toEntity()).getCommSq();
 	}
@@ -32,10 +33,17 @@ public class CommunityService {
 	
 	
 	@Transactional(readOnly = true)
-	public List<CommunityMainResponseDto> findAllDesc() {
+	public List<CommunityMainResponseDto> selectAllDesc() {
 		
 		return communityRepository.findAllDesc()
 									.map(CommunityMainResponseDto::new)
 									.collect(Collectors.toList());
+	}
+	
+	
+	
+	public Community selectCommunityBySq(long sq) {
+		
+		return communityRepository.findOneByCommSq(sq);
 	}
 }

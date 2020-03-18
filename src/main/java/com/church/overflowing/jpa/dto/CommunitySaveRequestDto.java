@@ -27,6 +27,8 @@ public class CommunitySaveRequestDto {
 	
 	private YesOrNo commUseYn;
 	
+	
+	
 	@Builder
 	public CommunitySaveRequestDto(String commNm,
 									String commPaster,
@@ -43,15 +45,17 @@ public class CommunitySaveRequestDto {
 		this.commUseYn = commUseYn;
 	}
 	
+	
+	
 	public Community toEntity() {
 		
 		return Community.builder()
-				.commNm(commNm)
-				.commPaster(commPaster)
-				.commStdate(commStdate)
-				.commEnddate(commEnddate)
-				.commDesc(commDesc)
-				.commUseYn(commUseYn)
-				.build();
+						.commNm(commNm)
+						.commPaster(commPaster)
+						.commStdate(commStdate)
+						.commEnddate(commEnddate)
+						.commDesc(commDesc)
+						.commUseYn(commUseYn)
+						.build();
 	}
 }

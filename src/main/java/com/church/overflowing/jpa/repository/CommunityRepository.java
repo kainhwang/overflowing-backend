@@ -11,6 +11,8 @@ public interface CommunityRepository extends JpaRepository<Community, Long> {
 	
 	
 	
-	@Query("SELECT c FROM Community c ORDER BY c.sq DESC")
+	@Query("SELECT c FROM Community c ORDER BY c.commSq DESC")
 	Stream<Community> findAllDesc();
+	
+	Community findOneByCommSq(long commSq);
 }

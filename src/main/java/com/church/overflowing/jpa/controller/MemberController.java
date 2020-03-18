@@ -2,7 +2,6 @@ package com.church.overflowing.jpa.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.church.overflowing.jpa.service.MemberService;
 
+import io.swagger.annotations.Api;
+import lombok.AllArgsConstructor;
+
 
 @RestController
+@AllArgsConstructor
+@Api(tags = "MEMBER")
 @RequestMapping("/member")
 public class MemberController {
 	
 	
 	
-	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 	
 	
 	
