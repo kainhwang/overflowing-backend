@@ -1,6 +1,6 @@
 package com.church.overflowing.jpa.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -33,11 +34,29 @@ public class MC extends BaseEntity {
 	private String mcLeader;
 	
 	@Column(name="MC_STDATE")
-	private Timestamp mcStdate;
+	private LocalDateTime mcStdate;
 	
 	@Column(name="MC_ENDDATE")
-	private Timestamp mcEnddate;
+	private LocalDateTime mcEnddate;
 	
 	@Column(name="MC_DESC")
 	private String mcDesc;
+	
+	
+	
+	@Builder
+	public MC(long mcSq,
+				String mcNm,
+				String mcLeader,
+				LocalDateTime mcStdate,
+				LocalDateTime mcEnddate,
+				String mcDesc) {
+		
+		this.mcSq = mcSq;
+		this.mcNm = mcNm;
+		this.mcLeader = mcLeader;
+		this.mcStdate = mcStdate;
+		this.mcEnddate = mcEnddate;
+		this.mcDesc = mcDesc;
+	}
 }

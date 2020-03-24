@@ -1,6 +1,6 @@
 package com.church.overflowing.jpa.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class Member extends BaseEntity {
 	private String memEnm;
 	
 	@Column(name="MEM_BIRTH")
-	private Timestamp memBirth;
+	private LocalDateTime memBirth;
 	
 	@Column(name="MEM_PHONE")
 	private String memPhone;
@@ -68,10 +68,10 @@ public class Member extends BaseEntity {
 	private String memMarriagePartner;
 	
 	@Column(name="MEM_MARRIAGE_DATE")
-	private Timestamp memMarriageDate;
+	private LocalDateTime memMarriageDate;
 	
 	@Column(name="MEM_REGDATE")
-	private Timestamp memRegDate;
+	private LocalDateTime memRegDate;
 	
 	@Column(name="MEM_GUIDE_NM")
 	private String memGuideNm;
@@ -84,7 +84,7 @@ public class Member extends BaseEntity {
 	private YesOrNo memBaptismYn;
 	
 	@Column(name="MEM_BAPTISM_DATE")
-	private Timestamp memBaptismDate;
+	private LocalDateTime memBaptismDate;
 	
 	@Column(name="MEM_BAPTISM_CHURCH")
 	private String memBaptismChurch;
@@ -132,10 +132,10 @@ public class Member extends BaseEntity {
 	private ChurchJob memChurchJob;
 	
 	@Builder
-	public Member(long memSq, String memId, String memPwd, String memNm, String memEnm, Timestamp memBirth,
+	public Member(long memSq, String memId, String memPwd, String memNm, String memEnm, LocalDateTime memBirth,
 			String memPhone, String memEmail, Gender memGender, YesOrNo memMarriageYn, String memMarriagePartner,
-			Timestamp memMarriageDate, Timestamp memRegDate, String memGuideNm, String memPreChurch,
-			YesOrNo memBaptismYn, Timestamp memBaptismDate, String memBaptismChurch, String memAddr, String memSchool,
+			LocalDateTime memMarriageDate, LocalDateTime memRegDate, String memGuideNm, String memPreChurch,
+			YesOrNo memBaptismYn, LocalDateTime memBaptismDate, String memBaptismChurch, String memAddr, String memSchool,
 			String memMajor, SchoolState memSchoolState, String memCompany, String memCompanyPosition,
 			String memCompanyTask, String memCarNm, String memCarNum, int memCarPool, String memDesc,
 			MemberGrade memGrade, ChurchJob memChurchJob) {
